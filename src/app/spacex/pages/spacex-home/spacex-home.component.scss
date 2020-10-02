@@ -1,0 +1,26 @@
+.launch-details-container {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  padding: 1rem;
+  header {
+    font-weight: 700;
+    font-size: 1.15rem;
+  }
+
+  footer {
+    text-align: center;
+  }
+
+  main {
+    display: flex;
+    margin-top: 0.5rem;
+    aside {
+      width: 180px;
+    }
+    section {
+      width: calc(100vw - 180px);
+    }
+  }
+ 
+}

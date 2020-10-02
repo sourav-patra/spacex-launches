@@ -1,5 +1,5 @@
 
-export interface SpaceXRequestParams {
+export interface SpaceXParams {
   launchSuccess?: boolean;
   landSuccess?: boolean;
   launchYear?: number;
@@ -13,4 +13,9 @@ export interface SpaceXModel {
   launchSuccess: boolean;
   launchLanding?: boolean;
   [additionalProperties: string]: any;
+}
+
+export interface FilterModel {
+  label: string;
+  value: string;
 }

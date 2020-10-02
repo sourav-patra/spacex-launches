@@ -1,1 +1,33 @@
-<p>filter works!</p>
+<div class="filter-container">
+  <header class="main-header">Filters</header>
+  <main class="filter-body">
+    <!-- Year filter -->
+    <section class="categories">
+      <header class="section-header">Launch Year</header>
+      <main class="filter-item-container">
+        <div *ngFor="let year of yearFilters; let i = index" class="filter-column-container">
+          <button [disabled]="loading$ | async" [ngClass]="{'active': selectedQueryParams?.launchYear === year.value}" (click)="selectYear(year.value)" class="filter-value">{{year.label}}</button>
+        </div>
+      </main>
+    </section>
+    <!-- Launch Filter -->
+    <section class="categories">
+      <header class="section-header">Successful Launch</header>
+      <main class="filter-item-container">
+        <div *ngFor="let launch of launchFilters; let i = index" class="filter-column-container">
+          <button [disabled]="loading$ | async" [ngClass]="{'active': selectedQueryParams?.launchSuccess === launch.value}" (click)="selectLaunch(launch.value)" class="filter-value">{{launch.label}}</button>
+        </div>
+      </main>
+    </section>
+    <!-- Landing Filter -->
+    <section class="categories">
+      <header class="section-header">Successful Landing</header>
+      <main class="filter-item-container">
+        <div *ngFor="let landing of landingFilters; let i = index" class="filter-column-container">
+          <button [disabled]="loading$ | async" [ngClass]="{'active': selectedQueryParams?.landSuccess === landing.value}" (click)="selectLanding(landing.value)" class="filter-value">{{landing.label}}</button>
+        </div>
+      </main>
+    </section>
+  </main>
+  
+</div>

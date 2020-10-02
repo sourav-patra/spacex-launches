@@ -3,19 +3,23 @@
  * Service dedicated to handle requests and responses for spacex APIs
  */
 import { Injectable, OnDestroy } from '@angular/core';
-import { SpaceXRequestParams, SpaceXModel } from '../../models/spacex.models';
-import { HttpParams } from '@angular/common/http';
+import { SpaceXParams, SpaceXModel } from '../../models/spacex.models';
+import { HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { Subject, Observable } from 'rxjs';
-import { takeUntil, map, tap } from 'rxjs/operators';
+import { takeUntil, map, tap, retry } from 'rxjs/operators';
 import { snakeToCamelCase, stringCamelToSnake } from '../../../core/utils/string-util';
 import { HttpService } from 'src/app/core/services/http/http.service';
+import { Params } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SpacexService implements OnDestroy {
 
-  requestParams: HttpParams = new HttpParams().set('limit', '100');
+  private loadingDetails$ = new Subject<boolean>();
+  get loadingDetails(): Observable<boolean> {
+    return this.loadingDetails$.asObservable();
+  }
   private launchDetailsSub$ = new Subject<SpaceXModel[]>();
   get launchDetailsObs(): Observable<SpaceXModel[]> {
     return this.launchDetailsSub$.asObservable();
@@ -40,28 +44,45 @@ export class SpacexService implements OnDestroy {
   }
 
   /**
-   * Add more params to the request
-   * @param paramKey key of param
-   * @param paramValue value of param
+   * Show loading spinner
    */
-  public appendParams(paramKey: string, paramValue: string): void {
-    this.requestParams = this.requestParams.append(paramKey, paramValue);
+  public showLoading(): void {
+    this.loadingDetails$.next(true);
   }
+
+  /**
+   * Hide loading spinner
+   */
+  public hideLoading(): void {
+    this.loadingDetails$.next(false);
+  }
+
 
   /**
    * Get the launch details with added parameters if provided
    * @param requestParams optional parameters
    */
-  getLaunchDetails(requestParams?: SpaceXRequestParams): void {
+  getLaunchDetails(requestParams?: SpaceXParams | Params): void {
+    let httpParams: HttpParams = new HttpParams().set('limit', '100');
     if (requestParams) {
       Object.keys(requestParams).forEach((param: string): void => {
-        this.appendParams(stringCamelToSnake(param), requestParams[param]);
+        httpParams = httpParams.append(stringCamelToSnake(param), requestParams[param]);
       });
     }
-    this.httpService.fetchData(`/v3/launches`, this.requestParams).pipe(
+    this.showLoading();
+    this.httpService.fetchData(`/v3/launches`, httpParams).pipe(
       map((response: unknown) => snakeToCamelCase(response)),
       tap((launchDetailsServer: SpaceXModel[]): void => this.setLaunchDetails(launchDetailsServer)),
+      retry(3),
       takeUntil(this.destroy$)
-    ).subscribe();
+    ).subscribe({
+      complete: (): void => this.hideLoading(),
+      error: (error: HttpErrorResponse): void => {
+        this.hideLoading();
+        // Should ideally be logged via a logger service
+        // Or shown gracefully using notifications/toast
+        console.log(error);
+      }
+    });
   }
 }
