@@ -5,9 +5,14 @@
     <aside>
       <app-filter></app-filter>
     </aside>
-    <section>
-      <app-launch-card></app-launch-card>
+    <section class="body">
+      <ng-container *ngIf="launchDetails$ | async as launchCards">
+        <app-launch-card *ngFor="let card of launchCards" [launchDetails]="card"></app-launch-card>
+      </ng-container>
     </section>
   </main>
-  <footer>Developed by: {{developerName}}</footer>
+  <footer>
+    <span class="footer-title">Developed by: </span>
+    <span>{{developerName}}</span>
+  </footer>
 </div>

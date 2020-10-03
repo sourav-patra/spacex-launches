@@ -1,1 +1,25 @@
-<p>launch-card works!</p>
+<section class="card-container">
+  <div class="image-container">
+    <a [href]="launchDetails.links?.articleLink" target="_blank" class="article-link">
+      <img title="launchDetails.details" [src]="launchDetails.links?.missionPatchSmall" [alt]="launchDetails.details"/>
+    </a>
+  </div>
+  <header>{{launchDetails.missionName}} #{{launchDetails.flightNumber}}</header>
+  <main>
+    <div class="form-item" [ngClass]="{'list-type': item.type === formValueType.list && item.value.length}"
+    *ngFor="let item of cardValue">
+      <div class="form-header">{{item.label}}:</div>
+      <div *ngIf="item.type === formValueType.list && item.value.length; else nonList" class="form-value">
+        <ul>
+          <li *ngFor="let type of item.value">{{type}}</li>
+        </ul>
+      </div>
+      <ng-template #nonList>
+        <div class="form-value">
+          {{item.type === formValueType.list ? 'N/A' : item.value || 'N/A'}}
+        </div>
+      </ng-template>
+    </div>
+    
+  </main>
+</section>

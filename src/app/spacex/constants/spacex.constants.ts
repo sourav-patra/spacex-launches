@@ -29,3 +29,17 @@ export const CONDITIONAL_FILTERS: FilterModel[] = [{
 }];
 
 export const VALID_QUERY_PARAMS = ['launchSuccess', 'launchYear', 'landSuccess'];
+
+export const CARD_FORM_CONSTANTS = [{
+  key: 'Mission Ids',
+  value: 'missionId'
+}, {
+  key: 'Launch Year',
+  value: 'launchYear'
+}, {
+  key: 'Successful Launch',
+  value: 'launchSuccess'
+}, {
+  key: 'Successful Landing',
+  value: 'landSuccess'
+}]
