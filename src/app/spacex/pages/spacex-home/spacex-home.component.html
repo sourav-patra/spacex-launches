@@ -5,11 +5,36 @@
     <aside>
       <app-filter></app-filter>
     </aside>
-    <section class="body">
+
+    <!-- If loader is activated show it -->
+    <ng-container *ngIf="loading$ | async as loadingFlag; else displayContents">
+      <section class="loading-body">
+        <div class="loader"></div>
+      </section>
+    </ng-container>
+
+    <!-- Proceed to show contents -->
+    <ng-template #displayContents>
+      <!-- Wait for data stream -->
       <ng-container *ngIf="launchDetails$ | async as launchCards">
-        <app-launch-card *ngFor="let card of launchCards" [launchDetails]="card"></app-launch-card>
+        <!-- Only show cards if there is no data -->
+        <section *ngIf="launchCards.length; else noItemsPresent" class="body">
+          <app-launch-card *ngFor="let card of launchCards" [launchDetails]="card"></app-launch-card>
+        </section>
+        <!-- Show NO DATA UI -->
+        <ng-template #noItemsPresent>
+          <section class="loading-body">
+            No data
+          </section>
+        </ng-template>
       </ng-container>
-    </section>
+     
+    </ng-template>
+
+    <!-- <section *ngIf="launchDetails$ | async as launchCards" class="body">
+      <app-launch-card *ngFor="let card of launchCards" [launchDetails]="card"></app-launch-card>
+    </section> -->
+    
   </main>
   <footer>
     <span class="footer-title">Developed by: </span>

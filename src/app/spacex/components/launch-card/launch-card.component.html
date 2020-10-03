@@ -1,7 +1,8 @@
 <section class="card-container">
   <div class="image-container">
     <a [href]="launchDetails.links?.articleLink" target="_blank" class="article-link">
-      <img title="launchDetails.details" [src]="launchDetails.links?.missionPatchSmall" [alt]="launchDetails.details"/>
+      <div *ngIf="imageLoading" class="loader"></div>
+      <img [hidden]="imageLoading" (load)="onImageLoad()" [title]="launchDetails.details" [src]="launchDetails.links?.missionPatchSmall" [alt]="launchDetails.details"/>
     </a>
   </div>
   <header>{{launchDetails.missionName}} #{{launchDetails.flightNumber}}</header>

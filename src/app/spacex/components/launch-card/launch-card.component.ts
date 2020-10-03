@@ -12,12 +12,19 @@ export class LaunchCardComponent implements OnInit {
   @Input() launchDetails: SpaceXModel;
   public formValueType = LaunchDetailsValueType;
   public cardValue: LaunchCardDetailsModel[] = [];
-
+  public imageLoading = true;
   constructor() { }
+
   ngOnInit(): void {
     this.prepareCardDetails();
   }
 
+  /**
+   * Hide the image loader when it is rendered in the DOM
+   */
+  public onImageLoad() {
+    this.imageLoading = false;
+  }
 
   /**
    * Prepare the card details as a list from given constants

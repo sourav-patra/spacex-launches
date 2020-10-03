@@ -23,16 +23,22 @@
     aside {
       width: 200px;
     }
-    section {
+    .body {
       display: grid;
       width: calc(100% - 200px);
       grid-template-columns: auto auto auto auto;
+    }
+    .loading-body {
+      display: flex;
+      width: calc(100vw - 500px);
+      align-items: center;
+      justify-content: center;
     }
   }
 }
 
 @media screen and (min-width: 700px) and (max-width: 1024px) {
-  .launch-details-container main section {
+  .launch-details-container main .body {
     grid-template-columns: auto auto;
   }
 }
@@ -41,9 +47,13 @@
 
   .launch-details-container main {
     flex-direction: column;
-    section.body {
+    .body {
       margin-top: 10px;
       grid-template-columns: auto;
+      width: 200px;
+    }
+    .loading-body {
+      height: 200px;
       width: 200px;
     }
   }

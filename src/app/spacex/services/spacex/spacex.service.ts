@@ -5,8 +5,8 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { SpaceXParams, SpaceXModel } from '../../models/spacex.models';
 import { HttpParams, HttpErrorResponse } from '@angular/common/http';
-import { Subject, Observable } from 'rxjs';
-import { takeUntil, map, tap, retry } from 'rxjs/operators';
+import { BehaviorSubject, Subject, Observable } from 'rxjs';
+import { takeUntil, map, tap, retry, delay } from 'rxjs/operators';
 import { snakeToCamelCase, stringCamelToSnake } from '../../../core/utils/string-util';
 import { HttpService } from 'src/app/core/services/http/http.service';
 import { Params } from '@angular/router';
@@ -16,11 +16,11 @@ import { Params } from '@angular/router';
 })
 export class SpacexService implements OnDestroy {
 
-  private loadingDetails$ = new Subject<boolean>();
+  private loadingDetails$ = new BehaviorSubject<boolean>(false);
   get loadingDetails(): Observable<boolean> {
     return this.loadingDetails$.asObservable();
   }
-  private launchDetailsSub$ = new Subject<SpaceXModel[]>();
+  private launchDetailsSub$ = new BehaviorSubject<SpaceXModel[]>(null);
   get launchDetailsObs(): Observable<SpaceXModel[]> {
     return this.launchDetailsSub$.asObservable();
   }

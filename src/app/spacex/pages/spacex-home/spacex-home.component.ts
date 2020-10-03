@@ -11,6 +11,7 @@ export class SpacexHomeComponent implements OnInit {
 
   public launchDetails$ = this.spaceXService.launchDetailsObs;
   public developerName = CONST.DEVELOPER_NAME;
+  public loading$ = this.spaceXService.loadingDetails;
   constructor(
     private spaceXService: SpacexService,
   ) { }
