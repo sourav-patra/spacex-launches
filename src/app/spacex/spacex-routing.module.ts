@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { SpacexHomeComponent } from './pages/spacex-home/spacex-home.component';
+import { SpacexHomeComponent } from "./pages/spacex-home/spacex-home.component";
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: "home",
     component: SpacexHomeComponent,
   },
 ];

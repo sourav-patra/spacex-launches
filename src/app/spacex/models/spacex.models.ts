@@ -1,4 +1,3 @@
-
 export interface SpaceXParams {
   launchSuccess?: boolean;
   landSuccess?: boolean;
@@ -35,6 +34,6 @@ export interface LaunchCardDetailsModel {
 }
 
 export enum LaunchDetailsValueType {
-  string = 'string',
-  list = 'list'
+  string = "string",
+  list = "list",
 }

@@ -1,8 +1,8 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { SpacexService } from './spacex.service';
+import { SpacexService } from "./spacex.service";
 
-describe('SpacexService', () => {
+describe("SpacexService", () => {
   let service: SpacexService;
 
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe('SpacexService', () => {
     service = TestBed.inject(SpacexService);
   });
 
-  it('should be created', () => {
+  it("should be created", () => {
     expect(service).toBeTruthy();
   });
 });

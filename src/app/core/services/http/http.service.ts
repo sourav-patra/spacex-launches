@@ -1,24 +1,19 @@
-
 /*
  * __author__ = 'Sourav Prakash Patra'
  * Service dedicated to handle all http requests
  */
-import { Injectable, OnDestroy } from '@angular/core';
-import {
-  HttpClient,
-  HttpParams,
-} from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Injectable, OnDestroy } from "@angular/core";
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { Observable, Subject } from "rxjs";
+import { takeUntil } from "rxjs/operators";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class HttpService implements OnDestroy {
-
-  public apiUrl = 'https://api.spaceXdata.com';
+  public apiUrl = "https://api.spaceXdata.com";
   private destroy$ = new Subject<boolean>();
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   /**
    * Destroy data streams
@@ -37,8 +32,10 @@ export class HttpService implements OnDestroy {
     appendedURLParams: string,
     httpParams?: HttpParams
   ): Observable<any> {
-    return this.httpClient.get<any>(this.apiUrl + appendedURLParams, {
-      ...(httpParams && { params: httpParams }),
-    }).pipe(takeUntil(this.destroy$));
+    return this.httpClient
+      .get<any>(this.apiUrl + appendedURLParams, {
+        ...(httpParams && { params: httpParams }),
+      })
+      .pipe(takeUntil(this.destroy$));
   }
 }

@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { InvalidRouteComponent } from './invalid-route.component';
+import { InvalidRouteComponent } from "./invalid-route.component";
 
-describe('InvalidRouteComponent', () => {
+describe("InvalidRouteComponent", () => {
   let component: InvalidRouteComponent;
   let fixture: ComponentFixture<InvalidRouteComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InvalidRouteComponent ]
-    })
-    .compileComponents();
+      declarations: [InvalidRouteComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('InvalidRouteComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

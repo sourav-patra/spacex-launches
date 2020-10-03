@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { SpacexHomeComponent } from './spacex-home.component';
+import { SpacexHomeComponent } from "./spacex-home.component";
 
-describe('SpacexHomeComponent', () => {
+describe("SpacexHomeComponent", () => {
   let component: SpacexHomeComponent;
   let fixture: ComponentFixture<SpacexHomeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SpacexHomeComponent ]
-    })
-    .compileComponents();
+      declarations: [SpacexHomeComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('SpacexHomeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

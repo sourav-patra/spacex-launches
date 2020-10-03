@@ -1,19 +1,22 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { LaunchCardDetailsModel, LaunchDetailsValueType, SpaceXModel } from '../../models/spacex.models';
-import { CARD_FORM_CONSTANTS } from '../../constants/spacex.constants';
+import { Component, OnInit, Input } from "@angular/core";
+import {
+  LaunchCardDetailsModel,
+  LaunchDetailsValueType,
+  SpaceXModel,
+} from "../../models/spacex.models";
+import { CARD_FORM_CONSTANTS } from "../../constants/spacex.constants";
 
 @Component({
-  selector: 'app-launch-card',
-  templateUrl: './launch-card.component.html',
-  styleUrls: ['./launch-card.component.scss']
+  selector: "app-launch-card",
+  templateUrl: "./launch-card.component.html",
+  styleUrls: ["./launch-card.component.scss"],
 })
 export class LaunchCardComponent implements OnInit {
-
   @Input() launchDetails: SpaceXModel;
   public formValueType = LaunchDetailsValueType;
   public cardValue: LaunchCardDetailsModel[] = [];
   public imageLoading = true;
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.prepareCardDetails();
@@ -22,7 +25,7 @@ export class LaunchCardComponent implements OnInit {
   /**
    * Hide the image loader when it is rendered in the DOM
    */
-  public onImageLoad() {
+  public onImageLoad(): void {
     this.imageLoading = false;
   }
 
@@ -31,14 +34,14 @@ export class LaunchCardComponent implements OnInit {
    * and the server provided response
    */
   public prepareCardDetails(): void {
-    this.cardValue = CARD_FORM_CONSTANTS.map(formItem => {
+    this.cardValue = CARD_FORM_CONSTANTS.map((formItem) => {
       return {
         label: formItem.key,
         value: this.launchDetails[formItem.value] || null,
-        type: Array.isArray(this.launchDetails[formItem.value]) ?
-          this.formValueType.list : this.formValueType.string
+        type: Array.isArray(this.launchDetails[formItem.value])
+          ? this.formValueType.list
+          : this.formValueType.string,
       };
     });
   }
-
 }

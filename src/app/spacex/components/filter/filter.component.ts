@@ -1,15 +1,15 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FilterModel, SpaceXParams } from '../../models/spacex.models';
-import * as CONST from '../../constants/spacex.constants';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { takeUntil } from 'rxjs/operators';
-import { SpacexService } from '../../services/spacex/spacex.service';
-import { Subject } from 'rxjs';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { FilterModel, SpaceXParams } from "../../models/spacex.models";
+import * as CONST from "../../constants/spacex.constants";
+import { Router, ActivatedRoute, Params } from "@angular/router";
+import { takeUntil } from "rxjs/operators";
+import { SpacexService } from "../../services/spacex/spacex.service";
+import { Subject } from "rxjs";
 
 @Component({
-  selector: 'app-filter',
-  templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.scss']
+  selector: "app-filter",
+  templateUrl: "./filter.component.html",
+  styleUrls: ["./filter.component.scss"],
 })
 export class FilterComponent implements OnInit, OnDestroy {
   selectedQueryParams: SpaceXParams;
@@ -18,7 +18,11 @@ export class FilterComponent implements OnInit, OnDestroy {
   landingFilters: FilterModel[];
   destroy$ = new Subject<boolean>();
   loading$ = this.spaceXService.loadingDetails;
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private spaceXService: SpacexService) { }
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private spaceXService: SpacexService
+  ) {}
 
   ngOnInit(): void {
     this.yearFilters = this.prepareFilters(CONST.LAUNCH_YEARS);
@@ -41,18 +45,16 @@ export class FilterComponent implements OnInit, OnDestroy {
    * Also check for invalid params
    */
   public checkQueryParams(): void {
-    this.activatedRoute.queryParams
-    .pipe(takeUntil(this.destroy$))
-    .subscribe({
+    this.activatedRoute.queryParams.pipe(takeUntil(this.destroy$)).subscribe({
       next: (routeQueryParams: Params): void => {
         // handle invalid parameters
         if (this.checkIfQueryParamIsInvalid(routeQueryParams)) {
-          this.router.navigate(['/404']);
+          this.router.navigate(["/404"]);
         } else {
-          this.selectedQueryParams = {...routeQueryParams};
+          this.selectedQueryParams = { ...routeQueryParams };
           this.spaceXService.getLaunchDetails(routeQueryParams);
         }
-      }
+      },
     });
   }
 
@@ -61,21 +63,24 @@ export class FilterComponent implements OnInit, OnDestroy {
    * @param constants types of year filters as constants
    */
   public prepareFilters(constants: string[]): FilterModel[] {
-    return constants.map((year: string): FilterModel => {
-      return {
-        label: `${year}`,
-        value: year
-      };
-    });
+    return constants.map(
+      (year: string): FilterModel => {
+        return {
+          label: `${year}`,
+          value: year,
+        };
+      }
+    );
   }
 
   /**
    * Select Year Filter
    */
   public selectYear(filterValue: number): void {
-    this.selectedQueryParams.launchYear = this.selectedQueryParams.launchYear === filterValue ? null : filterValue;
+    this.selectedQueryParams.launchYear =
+      this.selectedQueryParams.launchYear === filterValue ? null : filterValue;
     this.updateNavigationAndFetchLaunchDetails({
-      launchYear: this.selectedQueryParams.launchYear
+      launchYear: this.selectedQueryParams.launchYear,
     });
   }
 
@@ -83,9 +88,12 @@ export class FilterComponent implements OnInit, OnDestroy {
    * Select Launch Filter
    */
   public selectLaunch(filterValue: boolean): void {
-    this.selectedQueryParams.launchSuccess = this.selectedQueryParams.launchSuccess === filterValue ? null : filterValue;
+    this.selectedQueryParams.launchSuccess =
+      this.selectedQueryParams.launchSuccess === filterValue
+        ? null
+        : filterValue;
     this.updateNavigationAndFetchLaunchDetails({
-      launchSuccess: this.selectedQueryParams.launchSuccess
+      launchSuccess: this.selectedQueryParams.launchSuccess,
     });
   }
 
@@ -93,9 +101,10 @@ export class FilterComponent implements OnInit, OnDestroy {
    * Select Landing Filter
    */
   public selectLanding(filterValue: boolean): void {
-    this.selectedQueryParams.landSuccess = this.selectedQueryParams.landSuccess === filterValue ? null :  filterValue;
+    this.selectedQueryParams.landSuccess =
+      this.selectedQueryParams.landSuccess === filterValue ? null : filterValue;
     this.updateNavigationAndFetchLaunchDetails({
-      landSuccess: this.selectedQueryParams.landSuccess
+      landSuccess: this.selectedQueryParams.landSuccess,
     });
   }
 
@@ -104,12 +113,12 @@ export class FilterComponent implements OnInit, OnDestroy {
    * without changing the view
    * @param queryParams params to be added in the route path
    */
-  public updateNavigationAndFetchLaunchDetails(queryParams: Params) {
+  public updateNavigationAndFetchLaunchDetails(queryParams: Params): void {
     this.router.navigate([], {
       relativeTo: this.activatedRoute,
       queryParams,
-      queryParamsHandling: 'merge'
-     });
+      queryParamsHandling: "merge",
+    });
   }
 
   /**
@@ -119,7 +128,9 @@ export class FilterComponent implements OnInit, OnDestroy {
    */
   public checkIfQueryParamIsInvalid(queryParams: Params): boolean {
     const keysArray: string[] = Object.keys(queryParams);
-    return keysArray.length && keysArray.some(queryKey => !CONST.VALID_QUERY_PARAMS.includes(queryKey));
+    return (
+      keysArray.length &&
+      keysArray.some((queryKey) => !CONST.VALID_QUERY_PARAMS.includes(queryKey))
+    );
   }
-
 }
