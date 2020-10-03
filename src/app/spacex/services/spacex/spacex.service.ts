@@ -6,7 +6,7 @@ import { HttpErrorResponse, HttpParams } from "@angular/common/http";
 import { Injectable, OnDestroy } from "@angular/core";
 import { Params } from "@angular/router";
 import { BehaviorSubject, Observable, Subject } from "rxjs";
-import { delay, map, retry, takeUntil, tap } from "rxjs/operators";
+import { map, retry, takeUntil, tap } from "rxjs/operators";
 import { HttpService } from "src/app/core/services/http/http.service";
 import {
   snakeToCamelCase,
@@ -63,7 +63,7 @@ export class SpacexService implements OnDestroy {
    * Get the launch details with added parameters if provided
    * @param requestParams optional parameters
    */
-  getLaunchDetails(requestParams?: SpaceXParams | Params): void {
+  public getLaunchDetails(requestParams?: SpaceXParams | Params): void {
     let httpParams: HttpParams = new HttpParams().set("limit", "100");
     if (requestParams) {
       Object.keys(requestParams).forEach((param: string): void => {

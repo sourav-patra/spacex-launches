@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
+import { snakeToCamelCase } from "src/app/core/utils/string-util";
+import { launchDetails } from "src/app/shared/mocks/spacex-launches";
 import { LaunchCardComponent } from "./launch-card.component";
 
 describe("LaunchCardComponent", () => {
@@ -15,6 +17,7 @@ describe("LaunchCardComponent", () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(LaunchCardComponent);
     component = fixture.componentInstance;
+    component.launchDetails = snakeToCamelCase(launchDetails[0]);
     fixture.detectChanges();
   });
 
