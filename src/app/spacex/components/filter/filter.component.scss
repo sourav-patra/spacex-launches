@@ -46,9 +46,13 @@ $border: #e9e7e8;
           transition: background 0.2s ease;
           outline: none;
           border: none;
-          &:hover, &.active {
+          &:hover:not([disabled]),
+          &.active {
             background: $active;
             transition: background 0.2s ease;
+          }
+          &[disabled] {
+            cursor: default;
           }
         }
       }
