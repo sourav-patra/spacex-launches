@@ -2,8 +2,8 @@
  * __author__ = 'Sourav Prakash Patra'
  * Service dedicated to handle all http requests
  */
-import { Injectable, OnDestroy } from "@angular/core";
 import { HttpClient, HttpParams } from "@angular/common/http";
+import { Injectable, OnDestroy } from "@angular/core";
 import { Observable, Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 

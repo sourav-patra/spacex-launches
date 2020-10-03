@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { SpacexService } from "../../services/spacex/spacex.service";
 import * as CONST from "../../constants/spacex.constants";
+import { SpacexService } from "../../services/spacex/spacex.service";
 
 @Component({
   selector: "app-spacex-home",

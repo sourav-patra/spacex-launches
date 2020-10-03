@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
+import { CARD_FORM_CONSTANTS } from "../../constants/spacex.constants";
 import {
   LaunchCardDetailsModel,
   LaunchDetailsValueType,
   SpaceXModel,
 } from "../../models/spacex.models";
-import { CARD_FORM_CONSTANTS } from "../../constants/spacex.constants";
 
 @Component({
   selector: "app-launch-card",
@@ -18,6 +18,9 @@ export class LaunchCardComponent implements OnInit {
   public imageLoading = true;
   constructor() {}
 
+  /**
+   * Prepare Card prototypes
+   */
   ngOnInit(): void {
     this.prepareCardDetails();
   }

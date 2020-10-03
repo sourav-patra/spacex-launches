@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Route, RouterModule } from "@angular/router";
-import { SpacexModule } from "./spacex/spacex.module";
 import { InvalidRouteComponent } from "./shared/components/invalid-route/invalid-route.component";
+import { SpacexModule } from "./spacex/spacex.module";
 
 export const routes: Route[] = [
   {

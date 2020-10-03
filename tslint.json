@@ -61,6 +61,15 @@
       "severity": "warning",
       "options": ["call-signature", "parameter", "property-declaration"]
     },
+    "completed-docs": {
+      "severity": "warning",
+      "options": ["functions", "methods"]
+    },
+    "ordered-imports": {
+      "severity": "warning"
+    },
+    "cyclomatic-complexity": [true, 12],
+    "file-name-casing": [true, "kebab-case"],
     "typedef-whitespace": {
       "options": [
         {

@@ -1,10 +1,10 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { FilterModel, SpaceXParams } from "../../models/spacex.models";
-import * as CONST from "../../constants/spacex.constants";
-import { Router, ActivatedRoute, Params } from "@angular/router";
-import { takeUntil } from "rxjs/operators";
-import { SpacexService } from "../../services/spacex/spacex.service";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { ActivatedRoute, Params, Router } from "@angular/router";
 import { Subject } from "rxjs";
+import { takeUntil } from "rxjs/operators";
+import * as CONST from "../../constants/spacex.constants";
+import { FilterModel, SpaceXParams } from "../../models/spacex.models";
+import { SpacexService } from "../../services/spacex/spacex.service";
 
 @Component({
   selector: "app-filter",
@@ -24,7 +24,10 @@ export class FilterComponent implements OnInit, OnDestroy {
     private spaceXService: SpacexService
   ) {}
 
-  ngOnInit(): void {
+  /**
+   * Prepare filter prototypes
+   */
+  public ngOnInit(): void {
     this.yearFilters = this.prepareFilters(CONST.LAUNCH_YEARS);
     this.launchFilters = [...CONST.CONDITIONAL_FILTERS];
     this.landingFilters = [...CONST.CONDITIONAL_FILTERS];
