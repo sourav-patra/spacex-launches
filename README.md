@@ -9,11 +9,14 @@ An app that lists SpaceX launch missions through out the years 2006 to 2020. Bui
 - Check out the hosted app [here](https://app-spacex-launches.herokuapp.com)
 
 - Screenshots:
-![Phone View](https://user-images.githubusercontent.com/61248036/95018496-c32b3700-067d-11eb-9646-e8339898b0ef.PNG)
-
-![TabletView](https://user-images.githubusercontent.com/61248036/95018497-c4f4fa80-067d-11eb-93d1-e396244cb10c.PNG)
-
-![DesktopView1440px](https://user-images.githubusercontent.com/61248036/95018498-c58d9100-067d-11eb-957f-f982e54bec48.PNG)
+  - Mobile View (1 column till 700px)
+  - ![Phone View](https://user-images.githubusercontent.com/61248036/95018496-c32b3700-067d-11eb-9646-e8339898b0ef.PNG)
+  
+  - Tablet View (2 columns till 1024px)
+  - ![TabletView](https://user-images.githubusercontent.com/61248036/95018497-c4f4fa80-067d-11eb-93d1-e396244cb10c.PNG)
+  
+  - Desktop View (4 columns till 1440px and greater)
+  - ![DesktopView1440px](https://user-images.githubusercontent.com/61248036/95018498-c58d9100-067d-11eb-957f-f982e54bec48.PNG)
 
 ## Tech Stack
 
