@@ -20,7 +20,7 @@
     "dev:ssr": "ng run spacex-launches:serve-ssr",
     "prod:ssr": "ng run spacex-launches:server:production",
     "serve:ssr": "node dist/spacex-launches/server/main.js",
-    "build:ssr": "run-s format:check lint:check test build:PROD prod:ssr",
+    "build:ssr": "run-s format:check lint:check build:PROD prod:ssr",
     "prerender": "ng run spacex-launches:prerender"
   },
   "private": true,
