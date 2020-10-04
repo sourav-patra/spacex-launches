@@ -12,7 +12,7 @@ export const launchDetails = [
         "http://spacenews.com/38959spacex-delivers-thaicom-6-satellite-to-orbit/",
     },
     details:
-      'Second GTO launch for Falcon 9. The USAF evaluated launch data from this flight as part of a separate certification program for SpaceX to qualify to fly U.S. military payloads and found that the Thaicom 6 launch had "unacceptable fuel reserves at engine cutoff of the stage 2 second burnoff"',
+      "Second GTO launch for Falcon 9. The USAF evaluated launch data from this flight as part of a separate certification program for SpaceX to qualify to fly U.S. military payloads and found that the Thaicom 6 launch had 'unacceptable fuel reserves at engine cutoff of the stage 2 second burnoff'",
   },
   {
     flight_number: 14,

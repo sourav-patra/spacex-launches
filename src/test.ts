@@ -8,11 +8,13 @@ import {
 import "zone.js/dist/zone-testing";
 
 declare const require: {
+  // tslint:disable-next-line: completed-docs
   context(
     path: string,
     deep?: boolean,
     filter?: RegExp
   ): {
+    // tslint:disable-next-line: completed-docs
     keys(): string[];
     <T>(id: string): T;
   };
