@@ -37,3 +37,9 @@ export enum LaunchDetailsValueType {
   string = "string",
   list = "list",
 }
+
+export enum SpaceXParamsEnum {
+  LAUNCH = "launchSuccess",
+  LAND = "landSuccess",
+  YEAR = "launchYear",
+}
