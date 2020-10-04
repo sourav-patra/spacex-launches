@@ -1,5 +1,5 @@
 <section class="card-container">
-  <div class="image-container">
+  <div class="image-container" [ngClass]="{ 'height-for-ie': imageLoading }">
     <a
       [href]="launchDetails.links?.articleLink"
       target="_blank"

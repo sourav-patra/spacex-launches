@@ -1,4 +1,3 @@
-
 <div class="launch-details-container">
   <header>SpaceX Launch Programs</header>
   <main>
@@ -19,25 +18,25 @@
       <ng-container *ngIf="launchDetails$ | async as launchCards">
         <!-- Only show cards if there is no data -->
         <section *ngIf="launchCards.length; else noItemsPresent" class="body">
-          <app-launch-card *ngFor="let card of launchCards" [launchDetails]="card"></app-launch-card>
+          <div
+            *ngFor="let card of launchCards"
+            class="grid-item flex-grow"
+            [ngClass]="{
+              'flex-grow': launchCards?.length < 4
+            }"
+          >
+            <app-launch-card [launchDetails]="card"></app-launch-card>
+          </div>
         </section>
         <!-- Show NO DATA UI -->
         <ng-template #noItemsPresent>
-          <section class="loading-body">
-            No data
-          </section>
+          <section class="loading-body">No data</section>
         </ng-template>
       </ng-container>
-     
     </ng-template>
-
-    <!-- <section *ngIf="launchDetails$ | async as launchCards" class="body">
-      <app-launch-card *ngFor="let card of launchCards" [launchDetails]="card"></app-launch-card>
-    </section> -->
-    
   </main>
   <footer>
     <span class="footer-title">Developed by: </span>
-    <span>{{developerName}}</span>
+    <span>{{ developerName }}</span>
   </footer>
 </div>

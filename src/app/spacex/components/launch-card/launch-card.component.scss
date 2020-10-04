@@ -16,6 +16,10 @@
     position: relative;
     cursor: pointer;
 
+    &.height-for-ie {
+      height: 50px; // vertical alignment does not work properly in IE unless height is set
+    }
+
     img {
       height: 100%;
       width: 100%;

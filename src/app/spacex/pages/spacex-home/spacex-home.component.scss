@@ -23,9 +23,18 @@
       width: 200px;
     }
     .body {
-      display: grid;
+      // display: grid;
       width: calc(100% - 200px);
-      grid-template-columns: auto auto auto auto;
+      // grid-template-columns: auto auto auto auto;
+      display: flex;
+      flex-wrap: wrap;
+      // Implemented flex box as grid was not working well in IE
+      .grid-item {
+        width: 25%;
+        &.flex-grow {
+          flex-grow: 1;
+        }
+      }
     }
     .loading-body {
       display: flex;
@@ -38,7 +47,13 @@
 
 @media screen and (min-width: 700px) and (max-width: 1024px) {
   .launch-details-container main .body {
-    grid-template-columns: auto auto;
+    // grid-template-columns: auto auto;
+    .grid-item {
+      width: 50%;
+      &.flex-grow {
+        flex-grow: 0;
+      }
+    }
   }
 }
 
@@ -47,8 +62,11 @@
     flex-direction: column;
     .body {
       margin-top: 10px;
-      grid-template-columns: auto;
+      // grid-template-columns: auto;
       width: 200px;
+      .grid-item {
+        width: 100%;
+      }
     }
     .loading-body {
       height: 200px;
