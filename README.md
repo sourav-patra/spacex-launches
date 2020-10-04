@@ -38,21 +38,23 @@ An app that lists SpaceX launch missions through out the years 2006 to 2020. Bui
 - Added `tslint` configurations to set up standards and other static code quality checks.
 - Added `prettier` configurations to indent all files making it more readable and developer friendly.
 - Used angular `lazy-loading` to boost performance and reduce resource consumption.
-- Followed a standard for angular application folder structure
+- Followed the below standard for application folder structure
+  ```
   |--src
-  |--app
-  |--core
-  |--services
-  |--utils
-  |--shared
-  |--components
-  |--mocks
-  |--module1
-  |--components
-  |--models
-  |--constants
-  |--services
-  |--pages
+    |--app
+      |--core
+        |--services
+        |--utils
+      |--shared
+        |--components
+        |--mocks
+      |--module1
+        |--components
+        |--models
+        |--constants
+        |--services
+        |--pages
+  ```
 - Used `rxjs` extensively to minimize LOC, advocate clean coding practices, and asynchronous non-blocking operations.
 - Implemented unit and functional tests for major components and services and increased overall test coverage to around 75%.
 - Used husky to install pre-commit hooks for linting and formatting files.
