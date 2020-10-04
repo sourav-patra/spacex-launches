@@ -9,6 +9,11 @@ An app that lists SpaceX launch missions through out the years 2006 to 2020. Bui
 - Check out the hosted app [here](https://app-spacex-launches.herokuapp.com)
 
 - Screenshots:
+![Phone View](https://user-images.githubusercontent.com/61248036/95018496-c32b3700-067d-11eb-9646-e8339898b0ef.PNG)
+
+![TabletView](https://user-images.githubusercontent.com/61248036/95018497-c4f4fa80-067d-11eb-93d1-e396244cb10c.PNG)
+
+![DesktopView1440px](https://user-images.githubusercontent.com/61248036/95018498-c58d9100-067d-11eb-957f-f982e54bec48.PNG)
 
 ## Tech Stack
 
@@ -70,6 +75,8 @@ An app that lists SpaceX launch missions through out the years 2006 to 2020. Bui
 - Serving data from API [here](https://api.spaceXdata.com/v3/launches?limit=100)
 
 ## Lighthouse Performance
+
+![LigthHouse-62](https://user-images.githubusercontent.com/61248036/95018499-c6262780-067d-11eb-817f-28e85dd2a414.PNG)
 
 ## Development server
 
