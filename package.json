@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "build": "ng build",
+    "build": "ng build --prod --output-hashing=all --buildOptimizer=true",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -15,7 +15,7 @@
     "format:check": "prettier -c \"src/**/*.{js,ts}\" --write",
     "format:fix": "pretty-quick --staged",
     "changelog": "auto-changelog -p",
-    "node_cmd": "ng build --prod --output-hashing=all --buildOptimizer=true"
+    "postinstall": "ng build --prod --output-hashing=all --buildOptimizer=true"
   },
   "private": true,
   "dependencies": {

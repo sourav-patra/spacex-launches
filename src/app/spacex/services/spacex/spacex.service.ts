@@ -22,7 +22,7 @@ export class SpacexService implements OnDestroy {
   get loadingDetails(): Observable<boolean> {
     return this.loadingDetails$.asObservable();
   }
-  private launchDetailsSub$ = new BehaviorSubject<SpaceXModel[]>(null);
+  private launchDetailsSub$ = new BehaviorSubject<SpaceXModel[]>([]);
   get launchDetailsObs(): Observable<SpaceXModel[]> {
     return this.launchDetailsSub$.asObservable();
   }
@@ -87,6 +87,7 @@ export class SpacexService implements OnDestroy {
       .subscribe({
         complete: (): void => this.hideLoading(),
         error: (error: HttpErrorResponse): void => {
+          this.setLaunchDetails([]);
           this.hideLoading();
           // Should ideally be logged via a logger service
           // Or shown gracefully using notifications/toast

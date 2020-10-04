@@ -34,7 +34,7 @@ describe("SpacexService", () => {
       httpSpy.fetchData.and.returnValue(of(launchDetails));
       service.launchDetailsObs.subscribe({
         next: (response: SpaceXModel[]): void => {
-          if (response) {
+          if (response?.length) {
             // test if properly set
             expect(response).toBeDefined();
             // test if length is same as the mock server response
