@@ -8,7 +8,11 @@ import { SpacexModule } from "./spacex/spacex.module";
 
 @NgModule({
   declarations: [AppComponent, InvalidRouteComponent],
-  imports: [BrowserModule, SpacexModule, AppRoutingModule],
+  imports: [
+    BrowserModule.withServerTransition({ appId: "serverApp" }),
+    SpacexModule,
+    AppRoutingModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
