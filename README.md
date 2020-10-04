@@ -79,7 +79,7 @@ An app that lists SpaceX launch missions through out the years 2006 to 2020. Bui
 
 ## Lighthouse Performance
 
-- ![LigthHouse-62](https://user-images.githubusercontent.com/61248036/95018499-c6262780-067d-11eb-817f-28e85dd2a414.PNG)
+- ![image](https://user-images.githubusercontent.com/61248036/95023177-1b236700-0699-11eb-9305-d1af9c217cea.png)
 
 ## Development server
 
