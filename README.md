@@ -72,6 +72,7 @@ An app that lists SpaceX launch missions through out the years 2006 to 2020. Bui
 - Added format and lint checks to build pipeline.
 - Added `autochangelog` to auto generating changelog.
 - Handled website layout in all devices ranging from mobile, tablet and desktop, thereby enhancing responsiveness.
+- Advocated MINIMAL to ZERO hard-coding practices in components and service; used a constants file to acheive this.
 
 ## Server
 
